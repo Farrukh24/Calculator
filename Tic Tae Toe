@@ -1,0 +1,409 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace XO
+{
+    public partial class Form1 : Form
+       {
+        bool turn = true;
+        int turn_count = 0;
+        int k = 0;
+        
+
+        
+        public Form1()
+        {
+            InitializeComponent();
+            
+
+        }
+        
+               
+                
+
+        private void button_click(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            if (b.Text == string.Empty)
+            {
+                if (turn_count == 0)
+                {
+
+
+                    if (turn)
+                    {
+                        b.Text = "X";
+                        b.ForeColor = Color.Red;
+                        k++;
+
+                    }
+                    else
+                    {
+                        b.Text = "O";
+                        b.ForeColor = Color.Blue;
+                        k++;
+                    }
+                }
+            }
+             turn = !turn;
+            
+            if(k == 9)
+            {
+                MessageBox.Show("DRAW");            
+                
+            }
+            
+            WinnerChecker();
+        }
+
+        void WinnerChecker()
+        {
+            if (a1.Text == a2.Text && a1.Text == a3.Text && a3.Text != string.Empty)
+            {
+                a1.BackColor = a2.BackColor = a3.BackColor = Color.LightGreen;
+                turn_count++;
+            }
+            else if(a1.Text == b1.Text && a1.Text == c1.Text && c1.Text != string.Empty)
+            {
+                a1.BackColor = b1.BackColor = c1.BackColor = Color.LightGreen;
+                turn_count++;
+            }
+            else if(a1.Text == b2.Text && a1.Text == c3.Text && c3.Text != string.Empty)
+            {
+                a1.BackColor = b2.BackColor = c3.BackColor = Color.LightGreen;
+                turn_count++;
+            }
+            else if(a3.Text == b2.Text && a3.Text == c1.Text && c1.Text != string.Empty)
+            {
+                a3.BackColor = b2.BackColor = c1.BackColor = Color.LightGreen;
+                turn_count++;
+            }
+            else if(a3.Text == b3.Text && a3.Text == c3.Text && c3.Text != string.Empty)
+            {
+                a3.BackColor = b3.BackColor = c3.BackColor = Color.LightGreen;
+                turn_count++;
+            }
+            else if(b1.Text == b2.Text && b1.Text == b3.Text && b3.Text != string.Empty)
+            {
+                b1.BackColor = b2.BackColor = b3.BackColor = Color.LightGreen;
+                turn_count++;
+            }
+            else if(c1.Text == c2.Text && c1.Text == c3.Text && c3.Text != string.Empty)
+            {
+                c1.BackColor = c2.BackColor = c3.BackColor = Color.LightGreen;
+                turn_count++;
+            }
+
+           if(turn_count == 1)
+            {
+                MessageBox.Show("Player won!");             
+                ;
+            }
+           
+           
+        }
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F)
+            {
+                Application.Restart();
+            }
+            if(e.KeyCode == Keys.Q)
+            {
+                Environment.Exit(0);
+            }
+            if(e.KeyCode == Keys.S)
+            {
+                if (k == 9)
+                {
+                    MessageBox.Show("DRAW");
+                }
+                else MessageBox.Show("Player won!");
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void restartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("By Farrukhjon Kholmatov, Tic Tae Toe, 12/17/2020");
+        }
+    }
+}
+// design
+
+namespace XO
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// Обязательная переменная конструктора.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Освободить все используемые ресурсы.
+        /// </summary>
+        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Код, автоматически созданный конструктором форм Windows
+
+        /// <summary>
+        /// Требуемый метод для поддержки конструктора — не изменяйте 
+        /// содержимое этого метода с помощью редактора кода.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.a1 = new System.Windows.Forms.Button();
+            this.a2 = new System.Windows.Forms.Button();
+            this.a3 = new System.Windows.Forms.Button();
+            this.b1 = new System.Windows.Forms.Button();
+            this.b2 = new System.Windows.Forms.Button();
+            this.b3 = new System.Windows.Forms.Button();
+            this.c1 = new System.Windows.Forms.Button();
+            this.c2 = new System.Windows.Forms.Button();
+            this.c3 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // a1
+            // 
+            this.a1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.a1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.a1.ForeColor = System.Drawing.SystemColors.Control;
+            this.a1.Location = new System.Drawing.Point(-3, 39);
+            this.a1.Name = "a1";
+            this.a1.Size = new System.Drawing.Size(200, 200);
+            this.a1.TabIndex = 0;
+            this.a1.UseVisualStyleBackColor = false;
+            this.a1.Click += new System.EventHandler(this.button_click);
+            // 
+            // a2
+            // 
+            this.a2.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.a2.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.a2.ForeColor = System.Drawing.SystemColors.Control;
+            this.a2.Location = new System.Drawing.Point(191, 39);
+            this.a2.Name = "a2";
+            this.a2.Size = new System.Drawing.Size(200, 200);
+            this.a2.TabIndex = 1;
+            this.a2.UseVisualStyleBackColor = false;
+            this.a2.Click += new System.EventHandler(this.button_click);
+            // 
+            // a3
+            // 
+            this.a3.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.a3.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.a3.ForeColor = System.Drawing.SystemColors.Control;
+            this.a3.Location = new System.Drawing.Point(387, 39);
+            this.a3.Name = "a3";
+            this.a3.Size = new System.Drawing.Size(200, 200);
+            this.a3.TabIndex = 2;
+            this.a3.UseVisualStyleBackColor = false;
+            this.a3.Click += new System.EventHandler(this.button_click);
+            // 
+            // b1
+            // 
+            this.b1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.b1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b1.ForeColor = System.Drawing.SystemColors.Control;
+            this.b1.Location = new System.Drawing.Point(-3, 235);
+            this.b1.Name = "b1";
+            this.b1.Size = new System.Drawing.Size(200, 200);
+            this.b1.TabIndex = 3;
+            this.b1.UseVisualStyleBackColor = false;
+            this.b1.Click += new System.EventHandler(this.button_click);
+            // 
+            // b2
+            // 
+            this.b2.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.b2.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b2.ForeColor = System.Drawing.SystemColors.Control;
+            this.b2.Location = new System.Drawing.Point(191, 235);
+            this.b2.Name = "b2";
+            this.b2.Size = new System.Drawing.Size(200, 200);
+            this.b2.TabIndex = 4;
+            this.b2.UseVisualStyleBackColor = false;
+            this.b2.Click += new System.EventHandler(this.button_click);
+            // 
+            // b3
+            // 
+            this.b3.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.b3.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b3.ForeColor = System.Drawing.SystemColors.Control;
+            this.b3.Location = new System.Drawing.Point(387, 235);
+            this.b3.Name = "b3";
+            this.b3.Size = new System.Drawing.Size(200, 200);
+            this.b3.TabIndex = 5;
+            this.b3.UseVisualStyleBackColor = false;
+            this.b3.Click += new System.EventHandler(this.button_click);
+            // 
+            // c1
+            // 
+            this.c1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.c1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1.ForeColor = System.Drawing.SystemColors.Control;
+            this.c1.Location = new System.Drawing.Point(-3, 432);
+            this.c1.Name = "c1";
+            this.c1.Size = new System.Drawing.Size(200, 200);
+            this.c1.TabIndex = 6;
+            this.c1.UseVisualStyleBackColor = false;
+            this.c1.Click += new System.EventHandler(this.button_click);
+            // 
+            // c2
+            // 
+            this.c2.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.c2.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c2.ForeColor = System.Drawing.SystemColors.Control;
+            this.c2.Location = new System.Drawing.Point(191, 432);
+            this.c2.Name = "c2";
+            this.c2.Size = new System.Drawing.Size(200, 200);
+            this.c2.TabIndex = 7;
+            this.c2.UseVisualStyleBackColor = false;
+            this.c2.Click += new System.EventHandler(this.button_click);
+            // 
+            // c3
+            // 
+            this.c3.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.c3.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c3.ForeColor = System.Drawing.SystemColors.Control;
+            this.c3.Location = new System.Drawing.Point(387, 432);
+            this.c3.Name = "c3";
+            this.c3.Size = new System.Drawing.Size(200, 200);
+            this.c3.TabIndex = 8;
+            this.c3.UseVisualStyleBackColor = false;
+            this.c3.Click += new System.EventHandler(this.button_click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(582, 36);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.BackColor = System.Drawing.Color.DarkOrchid;
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.restartToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fileToolStripMenuItem.ForeColor = System.Drawing.Color.Coral;
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(59, 32);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.BackColor = System.Drawing.Color.DarkOrchid;
+            this.aboutToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aboutToolStripMenuItem.ForeColor = System.Drawing.Color.Coral;
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(84, 32);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // restartToolStripMenuItem
+            // 
+            this.restartToolStripMenuItem.Name = "restartToolStripMenuItem";
+            this.restartToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
+            this.restartToolStripMenuItem.Text = "Restart";
+            this.restartToolStripMenuItem.Click += new System.EventHandler(this.restartToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(582, 630);
+            this.Controls.Add(this.c3);
+            this.Controls.Add(this.c2);
+            this.Controls.Add(this.c1);
+            this.Controls.Add(this.b3);
+            this.Controls.Add(this.b2);
+            this.Controls.Add(this.b1);
+            this.Controls.Add(this.a3);
+            this.Controls.Add(this.a2);
+            this.Controls.Add(this.a1);
+            this.Controls.Add(this.menuStrip1);
+            this.ForeColor = System.Drawing.SystemColors.Control;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "Form1";
+            this.Text = "     ";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button a1;
+        private System.Windows.Forms.Button a2;
+        private System.Windows.Forms.Button a3;
+        private System.Windows.Forms.Button b1;
+        private System.Windows.Forms.Button b2;
+        private System.Windows.Forms.Button b3;
+        private System.Windows.Forms.Button c1;
+        private System.Windows.Forms.Button c2;
+        private System.Windows.Forms.Button c3;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restartToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+    }
+}
+
